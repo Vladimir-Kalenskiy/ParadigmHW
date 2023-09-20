@@ -3,7 +3,8 @@
 # использовать любую парадигму, но рекомендую использовать
 # функциональную
 #
-import numpy as np
+from math import sqrt
+from statistics import mean
 
 
 def pearson_correlation(x, y):
@@ -14,13 +15,13 @@ def pearson_correlation(x, y):
     n = len(x)
 
     # Вычисляем средние значения для обоих массивов
-    mean_x = np.mean(x)
-    mean_y = np.mean(y)
+    mean_x = mean(x)
+    mean_y = mean(y)
 
     # Вычисляем числитель и знаменатель для корреляции Пирсона
     numerator = sum((x[i] - mean_x) * (y[i] - mean_y) for i in range(n))
-    denominator_x = np.sqrt(sum((x[i] - mean_x) ** 2 for i in range(n)))
-    denominator_y = np.sqrt(sum((y[i] - mean_y) ** 2 for i in range(n)))
+    denominator_x = sqrt(sum((x[i] - mean_x) ** 2 for i in range(n)))
+    denominator_y = sqrt(sum((y[i] - mean_y) ** 2 for i in range(n)))
 
     # Вычисляем корреляцию Пирсона
     correlation = numerator / (denominator_x * denominator_y)
